@@ -34,17 +34,78 @@ fn main() {
 
     let x: (i32, f64, u8) = (500, 6.4, 1);
 
-    let five_hundred = x.0;
+    let _five_hundred = x.0;
 
-    let six_point_four = x.1;
+    let _six_point_four = x.1;
 
-    let one = x.2;
+    let _one = x.2;
 
-    let minha_array = [1, 2, 3, 4];
+    let _minha_array = [1, 2, 3, 4];
 
     // arrays, tem tamanho fixo:
     let months = ["January", "February", "March", "April", "May", "June", "July",
                   "August", "September", "October", "November", "December"];
 
     println!("{}", months[11]);
+
+    // funções
+
+    another_function();
+
+    another_function2(x.0);
+
+    // controle de fluxo
+
+    let is_raining = false;
+
+    if is_raining {
+        println!("Fique em casa!");
+    } else {
+        println!("Vá passear");
+    }
+
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("O valor de result é: {result}");
+
+    // while loops
+
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("Saiu do loop!!!");
+
+    // for loops
+
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+
+    for number in (1..5) {
+        println!("{number}!");
+    }
+    println!("Saiu do loop!!!");
+}
+
+fn another_function() {
+    println!("Another function");
+}
+
+fn another_function2(x: i32) {
+    println!("{x}");
 }
