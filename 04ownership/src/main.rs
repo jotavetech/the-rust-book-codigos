@@ -16,7 +16,7 @@ fn main() {
     println!("{s2}");
 
     let s3 = "teste"; // válido
-    let s4 = s3; // válido
+    let _s4 = s3; // válido
 
     let s5 = String::from("e agora hein");
 
@@ -34,7 +34,12 @@ fn main() {
     println!("{num2}");
 
 
-    // ownership e funções
+
+
+    
+
+
+    // OWNERSHIP E FUNÇÕES
 
     let s7 = String::from("hello s7");  // s vem no escopo
 
@@ -46,6 +51,51 @@ fn main() {
     makes_copy(x); // x é passado para a função, mas como é do tipo i32, sabemos o tamanho e ele pode ficar, então continua sendo válido.
 
     println!("{x}"); // x continua válido
+
+
+
+
+
+
+
+    // REFERENCIAS
+
+    let string_nova = String::from("hello");
+
+    let len = calculate_length(&string_nova);
+
+    println!("The length of {} is {}", string_nova, len);
+
+
+    let mut string_2 = String::from("hello");
+    
+    change(&mut string_2);
+
+    println!("{string_2}"); // alterou e agora é hello, world
+    
+    let mut string_3 = String::from("hello");
+
+    {
+        let _r1 = &mut string_3;
+    } // r1 sai do escopo e é droppado
+
+    let _r2 = &mut string_3;
+
+    let mut s = String::from("hello");
+
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    println!("{} and {}", r1, r2);
+    // variables r1 and r2 will not be used after this point
+
+    let r3 = &mut s; // no problem
+    println!("{}", r3);
+
+
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
 }
 
 fn takes_ownership(some_string: String) { 
@@ -55,3 +105,7 @@ fn takes_ownership(some_string: String) {
 fn makes_copy(some_integer: i32) {
     println!("{}", some_integer);
 } // aqui, some_integer sai do escopo. nada especial acontece
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
