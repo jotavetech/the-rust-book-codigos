@@ -1,3 +1,5 @@
+use std::fmt::format;
+
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     let mut w = vec![1, 2, 3];
@@ -8,7 +10,7 @@ fn main() {
     println!("w: {:?}", w);
     println!("v: {:?}", v);
 
-    let mut c = vec![1, 2, 3, 4, 5];
+    let c = vec![1, 2, 3, 4, 5];
 
     let first = &c[0];
 
@@ -27,4 +29,31 @@ fn main() {
     }
 
     println!("v[0]: {}", v[0]);
+
+    // Strings UTF-8
+
+    let _s = String::from("initial contents");
+
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    println!("foo {s}");
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    // let s = s1 + "-" + &s2 + "-" + &s3;
+    let s = format!("{s1}-{s2}-{s3}");
+
+    println!("{s}");
+
+    let slice = "string 1";
+    let part = &slice[0..2];
+
+    println!("{}", part);
+
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
 }
